@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Car from './Car/car'
+import './App.scss';
+import Car from './Car/car';
 
 class App extends Component {
 
@@ -84,7 +85,10 @@ class App extends Component {
         {/*<input type="text" onChange={this.handleInput} />*/}
 
         {/*<button onClick={this.changeTitleHandler.bind(this, 'Hello')}>Change title</button>*/}
-        <button onClick={this.toggleCarseHandler}>Toggle cars</button>
+        <button
+          className={'AppButton'}
+          onClick={this.toggleCarseHandler}
+        >Toggle cars</button>
 
         <div style={{
           width: 400,
