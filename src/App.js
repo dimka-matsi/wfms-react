@@ -4,6 +4,11 @@ import Car from './Car/car';
 
 class App extends Component {
 
+  constructor() {
+    super();
+    console.log('four');
+  }
+
   state = {
     cars: [
       {name: 'Ford', year: '2018'},
@@ -55,7 +60,16 @@ class App extends Component {
     });
   }
 
+  componentWillMount() {
+    console.log('first');
+  }
+
+  componentDidMount() {
+    console.log('second');
+  }
+
   render() {
+    console.log('third');
     const divStyle = {
       textAlign: 'center'
     };
@@ -80,7 +94,8 @@ class App extends Component {
 
     return (
       <div style={divStyle}>
-        <h1>{this.state.pageTitle}</h1>
+        {/*<h1>{this.state.pageTitle}</h1>*/}
+        <h1>{this.props.title}</h1>
 
         {/*<input type="text" onChange={this.handleInput} />*/}
 
