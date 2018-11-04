@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Car from './Car/car';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Counter from './Counter/Counter'
 
 class App extends Component {
 
   constructor() {
     super();
-    console.log('four');
+    console.log('constructor');
   }
 
   state = {
@@ -61,15 +63,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    console.log('first');
+    console.log('componentWillMount');
   }
 
   componentDidMount() {
-    console.log('second');
+    console.log('componentDidMount');
   }
 
   render() {
-    console.log('third');
+    console.log('render app');
     const divStyle = {
       textAlign: 'center'
     };
@@ -79,13 +81,14 @@ class App extends Component {
     if (this.state.showCars) {
       car = this.state.cars.map((car, index) => {
             return (
-                <Car
-                  key={index}
-                  name={car.name}
-                  year={car.year}
-                  onDelete={this.deleteHandler.bind(this, index)}
-                  onChangeName={event => this.onChangeName(event.target.value, index)}
-                />
+                <ErrorBoundary key={index}>
+                  <Car
+                    name={car.name}
+                    year={car.year}
+                    onDelete={this.deleteHandler.bind(this, index)}
+                    onChangeName={event => this.onChangeName(event.target.value, index)}
+                  />
+                </ErrorBoundary>
               );
           })
     }
@@ -96,6 +99,10 @@ class App extends Component {
       <div style={divStyle}>
         {/*<h1>{this.state.pageTitle}</h1>*/}
         <h1>{this.props.title}</h1>
+
+        <Counter />
+
+        <hr />
 
         {/*<input type="text" onChange={this.handleInput} />*/}
 
